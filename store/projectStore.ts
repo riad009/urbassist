@@ -2,13 +2,14 @@ import { create } from 'zustand'
 
 export interface ProjectElement {
   id: string
-  type: 'building' | 'boundary' | 'setback' | 'vegetation' | 'road' | 'parking' | 'custom'
+  type: 'building' | 'boundary' | 'setback' | 'vegetation' | 'road' | 'parking' | 'pool' | 'terrace' | 'custom'
   name: string
   data: object
   measurements: {
     area?: number
     perimeter?: number
     height?: number
+    width?: number
   }
 }
 

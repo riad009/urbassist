@@ -528,7 +528,7 @@ export default function EditorPage() {
     if (!canvas) return;
 
     const handleMouseMove = (e: fabric.TPointerEventInfo) => {
-      const pointer = canvas.getPointer(e.e);
+      const pointer = e.scenePoint || e.viewportPoint || { x: 0, y: 0 };
       setMousePos({ x: pointer.x, y: pointer.y });
 
       if (isDrawing && drawingStart) {
@@ -598,7 +598,7 @@ export default function EditorPage() {
     const handleMouseDown = (e: fabric.TPointerEventInfo) => {
       if (activeTool === "select" || activeTool === "pan") return;
       
-      const pointer = canvas.getPointer(e.e);
+      const pointer = e.scenePoint || e.viewportPoint || { x: 0, y: 0 };
 
       // Polygon/Parcel mode - add points on click
       if (activeTool === "polygon" || activeTool === "parcel") {
@@ -613,7 +613,7 @@ export default function EditorPage() {
     const handleMouseUp = (e: fabric.TPointerEventInfo) => {
       if (!isDrawing || !drawingStart) return;
       
-      const pointer = canvas.getPointer(e.e);
+      const pointer = e.scenePoint || e.viewportPoint || { x: 0, y: 0 };
 
       // Remove temp shape
       if (tempShape) {

@@ -148,7 +148,7 @@ export function CanvasEditor({ width = 1200, height = 800 }: CanvasEditorProps) 
       canvas.renderAll()
     })
     
-    canvas.on("object:moved", () => {
+    canvas.on("object:modified", () => {
       setAlignmentGuides([])
     })
 
